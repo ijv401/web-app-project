@@ -1,0 +1,34 @@
+
+<!DOCTYPE html >
+<html lang="en">
+<%- include('include/head')%>
+<body>
+    <%- include('include/header')%>
+    
+    <main>
+    <h1><%= post.title%></h1>
+
+    <article>
+        <small>posted by <%= post.username%> on <%= new Date(post.createdDate).getMonth()+1 %>/<%= new Date(post.createdDate).getDate()%>/<%=new Date(post.createdDate).getFullYear()%></small>
+        <div>
+            <%- filteringhtml(post.body)%>
+            
+        </div>
+
+        </article>
+        <% if (isAuthor){%>
+        <a href="/edit-post/<%=post.id%>" class="button">Edit post</a>
+
+        <form style="display: inline;"action= "/delete-post/<%=post.id%>" method="POST">
+            <button>Delete Post </button>
+        </form>
+        <%}%>
+        
+        
+        
+        
+    </main>
+    <%- include('include/footer')%>
+</body>
+
+</html> 
